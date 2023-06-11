@@ -9,12 +9,12 @@ function Prompt
 {
     # プロンプト文字列を定義
     $promptString = "PS " + $(Get-Location) + ">"
-    $isAadmin = '>$'
+    $isAdmin = '>$'
 
     # 現在のユーザが管理者かどうか判定
     if(([Secutiry.Principal.Windowsprincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([System.Secutiry.Principal.WindowsBUiltinRole] "Administrator"))
     {
-        $isAdmin = '>#'
+        $isAdmin = '>$'
     }
 
     # Windowsコンソールの場合
