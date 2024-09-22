@@ -1,3 +1,8 @@
+if ($PSVersionTable.PSVersion.Major -lt 5) {
+    Write-Warning "このスクリプトにはPowerShell 5.0以降が必要です。"
+    return # またはスクリプトを終了する
+}
+
 ## 設定を変更する
 Set-PSReadLineOption -HistorySaveStyle SaveIncrementally
 Set-PSReadLineOption -EditMode vi
@@ -12,7 +17,7 @@ function Prompt
     $isAdmin = '>$'
 
     # 現在のユーザが管理者かどうか判定
-    if(([Secutiry.Principal.Windowsprincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([System.Secutiry.Principal.WindowsBUiltinRole] "Administrator"))
+    if(([Secutiry.Principal.Windowsprincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([System.Security.Principal.WindowsBuiltinRole] "Administrator"))
     {
         $isAdmin = '>$'
     }
